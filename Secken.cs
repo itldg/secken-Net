@@ -110,20 +110,6 @@ namespace DiyCms.CmsAdmin
     /// <returns>获得返回的json数据</returns>
     public  string authPage(string callback)
     {
-        string time = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000).ToString();
-        string temp = "auth_id=" + _Auth_ID + "callback=" + HttpUtility.UrlEncodeUnicode(callback) + "timestamp=" + time + _APP_KEY;
-        string md5 = FormsAuthentication.HashPasswordForStoringInConfigFile(temp, "MD5");
-        string data = "auth_id=" + _Auth_ID + "&timestamp=" + time + "&callback=" + HttpUtility.UrlEncodeUnicode(HttpUtility.UrlEncodeUnicode(callback)) + "&signature=" + md5;
-        string result = Http(_AuthPage, "GET", data);
-        return result;
-    }
-    /// <summary>
-    /// 无网络认证
-    /// </summary>
-    /// <param name="callback">回调地址</param>
-    /// <returns>获得返回的json数据</returns>
-    public  string authPage_url(string callback)
-    {
         string timedata = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000).ToString();
         string temp = "auth_id=" + _Auth_ID + "callback=" + HttpUtility.UrlEncodeUnicode(callback) + "timestamp=" + timedata + _APP_KEY;
         string md5 = FormsAuthentication.HashPasswordForStoringInConfigFile(temp, "MD5").ToLower();
