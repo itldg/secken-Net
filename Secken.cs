@@ -206,7 +206,7 @@ namespace DiyCms.CmsAdmin
         /// <summary>
         /// GET请求与获取结果
         /// </summary>
-        public static string Http(string Url, string method,string postDataStr)
+        public string Http(string Url, string method,string postDataStr)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url + (postDataStr == "" ? "" : "?") + postDataStr);
             request.Method = method;
